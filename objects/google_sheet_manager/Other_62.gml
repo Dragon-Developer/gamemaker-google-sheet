@@ -28,14 +28,15 @@ if (_status == 0 && _valid) {
 			status: _status,
 			path: _req.path
 		});
-	} else {
+	} 
+	// No path: load grid and delete temporary file
+	else {
 		_req.callback({
 			status: _status,
 			grid: global.googleSheet.loadGrid(_path)
 		});	
 		file_delete(_path);
 	}
-	// No path, load directly to the memory
 }
 else if (_status != 1) {
 	_req.error({
